@@ -1,0 +1,20 @@
+<h1>Tasks Index Page</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Created_at</th>
+  </tr>
+  <% @task.each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.content %></td>
+    <td><%= task.created_at %></td>
+    <td><%= link_to 'Show', task_path(task.id), id:'show-task' %></td>
+    <td><%= link_to 'Edit', edit_task_path(task.id), id: 'edit-task' %></td>
+    <td><%= link_to 'Destroy', task_path(task.id), method: :delete, id: 'destroy-task' %></td>
+  </tr>
+  <% end %>
+</table>
+    
+    
