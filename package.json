@@ -10,7 +10,7 @@
 		"turbolinks": "^5.2.0"
 	},
 	"engines": {
-		"node": "16.1.0"
+		"node": "16.16.0"
 	},
 	"version": "0.1.0",
 	"devDependencies": {
