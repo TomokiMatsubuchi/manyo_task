@@ -10,6 +10,15 @@
   </head>
 
   <body>
+  <div class = "text-sucess">
+    <%= flash[:notice] %>
+  </div>
+  <div class = "text-danger">
+    <%= flash[:alert] %>
+  </div>
+  <ul>
+    <li><%= link_to 'Tasks Index', tasks_path, id: 'tasks-index' %></li>
+    <li><%= link_to 'New Task', new_task_path, id: 'new-task' %></li>
     <%= yield %>
   </body>
 </html>
