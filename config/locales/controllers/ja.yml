@@ -1,0 +1,8 @@
+ja:
+  tasks:
+    create:
+      Task was successfully created: "タスクを登録しました"
+    update:
+      Task was successfully updated: "タスクを更新しました"
+    destroy:
+      Task was successfully destroyed: "タスクを削除しました"
