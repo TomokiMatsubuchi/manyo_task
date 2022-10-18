@@ -1,0 +1,41 @@
+ja:
+  defaults:
+    Tasks Index: 'タスク一覧'
+    New Task: 'タスクを登録する'
+  tasks:
+    index:
+      Tasks Index Page: 'タスク一覧ページ'
+      title: 'タイトル'
+      content: '内容'
+      created_at: '作成日時'
+      Show: '詳細'
+      Edit: '編集'
+      Destroy: '削除'
+      Are you sure?: '本当に削除してもよろしいですか?'
+    new:
+      New Task: 'タスク登録ページ'
+      Title: 'タイトル'
+      Content: '内容'
+      Create Task: '登録する'
+      Back: '戻る'
+    show:
+      Show Task: 'タスク詳細ページ'
+      Title: 'タイトル'
+      Content: '説明'
+      Created_at: '作成日時'
+      Edit: '編集'
+      Back: '戻る'
+    edit:
+      Edit Task: 'タスク編集ページ'
+      Title: 'タイトル'
+      Content: '内容'
+      Update Task: '更新する'
+      Back: '戻る'
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+  
