@@ -1,18 +1,31 @@
 <h1><%= t('.Tasks Index Page') %></h1>
+<%= form_with(url: tasks_path, method: :get, scope: :search, local: true) do |form| %>
+<%= form.label :status, t('.status') %>
+<%= form.select :status, Task.statuses.keys.to_a, {include_blank: true} %><br>
+<%= form.label :title, t('.title') %>
+<%= form.text_field :title %><br>
+<%= form.submit t('.search'), id: 'search_task' %>
+<% end %>
 <table>
   <tr>
     <th><%= t('.title') %></th>
     <th><%= t('.content') %></th>
     <th><%= t('.created_at') %></th>
+    <th><%= link_to  t('.deadline_on'), sort_deadline_on: true %></th>
+    <th><%= link_to t('.priority'), sort_priority: true %></th>
+    <th><%= t('.status') %></th>
   </tr>
   <% @tasks.each do |task| %>
   <tr>
     <td><%= task.title %></td>
     <td><%= task.content %></td>
     <td><%= task.created_at.strftime("%Y/%m/%d/%H:%M") %></td>
-    <td><%= link_to t('.Show'), task_path(task.id), id:'show-task' %></td>
-    <td><%= link_to t('.Edit'), edit_task_path(task.id), id: 'edit-task' %></td>
-    <td><%= link_to t('.Destroy'), task_path(task.id), method: :delete, id: 'destroy-task', data: {confirm: t('.Are you sure?')} %></td>
+    <td><%= task.deadline_on %></td>
+    <td><%= task.priority %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to t('.show-task'), task_path(task.id), class:'show-task' %></td>
+    <td><%= link_to t('.edit-task'), edit_task_path(task.id), class: 'edit-task' %></td>
+    <td><%= link_to t('.destroy-task'), task_path(task.id), method: :delete, class: 'destroy-task', data: {confirm: t('.Are you sure?')} %></td>
   </tr>
   <% end %>
 </table>

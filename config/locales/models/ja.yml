@@ -6,4 +6,7 @@ ja:
       task:
         title: 'タイトル'
         content: '内容'
+        deadline_on: '終了期限'
+        priority: '優先度'
+        status: 'ステータス'
       

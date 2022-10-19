@@ -1,8 +1,26 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.order("created_at DESC").page(params[:page])
+    @tasks = Task.desc_create.page(params[:page])
+    
+    if params[:sort_deadline_on]
+      @tasks = Task.deadline.page(params[:page])
+    elsif params[:sort_priority]
+      @tasks = Task.priority.page(params[:page])
+    else
+      @tasks = Task.desc_create.page(params[:page])
+    end
+
+
+    if  params[:search].present?
+      if params["search"]["status"].present? && params["search"]["title"].present?
+        @tasks = Task.search_status(params).search_title(params).page(params[:page])
+      elsif params["search"]["title"].present?
+        @tasks = Task.search_title(params).page(params[:page])
+      elsif params["search"]["status"].present?
+        @tasks = Task.search_status(params).page(params[:page])
+      end
+    end
   end
 
   def new
@@ -20,12 +38,15 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def update
+    @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:notice] = t('.Task was successfully updated')
       redirect_to tasks_path
@@ -35,6 +56,7 @@ class TasksController < ApplicationController
   end
 
     def destroy
+      @task = Task.find(params[:id])
       @task.destroy
       flash[:notice] = t('.Task was successfully destroyed')
       redirect_to tasks_path
@@ -43,10 +65,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content)
-  end
-
-  def set_task
-    @task = Task.find(params[:id])
+    params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
   end
 end
