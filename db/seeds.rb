@@ -1,5 +1,9 @@
 
+Task.create!(title: "task_title_11", content: "testデータ", deadline_on: "2020-10-10", priority: "高", status: Task.statuses.values.to_a.sample)
+
 50.times do |i|
-  Task.create!(title: "Task#{ i + 1 }", content: "testデータ", deadline_on: Date.current + i, priority: Task.priorities.values.to_a.sample, status: Task.statuses.values.to_a.sample)
+  Task.create!(title: "task_title_#{ i + 1 }", content: "testデータ", deadline_on: Date.current + i, priority: "中", status: Task.statuses.values.to_a.sample)
 end
+
+#Task.priorities.values.to_a.sample これはpriorityをランダムに取り出す際に必要
 
