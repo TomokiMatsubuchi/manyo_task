@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     if params[:sort_deadline_on]
       @tasks = Task.deadline.page(params[:page])
     elsif params[:sort_priority]
-      @tasks = Task.priority.page(params[:page])
+      @tasks = Task.priority.desc_create.page(params[:page])
     else
       @tasks = Task.desc_create.page(params[:page])
     end

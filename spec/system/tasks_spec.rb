@@ -75,7 +75,7 @@ RSpec.describe 'タスク管理機能', type: :system do
           click_on('検索')
           task_list = all('tbody tr')
           expect(page).not_to have_content 'first_task'
-          expect(page).to have_content 'second_task'
+          expect(page).to have_content '着手中'
           expect(page).not_to have_content 'third_task'
         end
       end
@@ -101,6 +101,22 @@ RSpec.describe 'タスク管理機能', type: :system do
         task = FactoryBot.create(:task)
         visit task_path(task.id)
         expect(page).to have_content '書類作成'
+      end
+    end
+  end
+
+  describe '優先度' do
+    Task.create!(title: "task_title_11", content: "testデータ", deadline_on: "2020-10-10", priority: "高", status: Task.statuses.values.to_a.sample)
+
+    #50.times do |i|
+    #  Task.create!(title: "task_title_#{ i + 1 }", content: "testデータ", deadline_on: Date.current + i, priority: "中", status: Task.statuses.values.to_a.sample)
+    #end
+    context '優先度を降順にしたさい、title_11が取れる' do
+      it 'task_title_11が表示される' do
+        visit tasks_path
+        click_link('優先度')
+        task_list = all('tbody tr')
+        expect(task_list[0].text).to have_content 'task_title_11'
       end
     end
   end
