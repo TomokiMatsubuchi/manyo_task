@@ -18,7 +18,7 @@
   <%= form.label :password_confirmation, t('.password_confirmation') %><br>
   <%= form.password_field :password_confirmation %><br>
   <%= form.label :admin, t('.admin') %><br>
-  <%= form.check_box :admin, {}, "yes", "no" %><br>
+  <%= form.check_box :admin, {}, "true", "false" %><br>
   <%= form.submit id: 'update-user' %>
 <% end %>
 <%= link_to t('.Back'), :back, id: 'back' %>
