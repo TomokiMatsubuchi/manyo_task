@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  #before_action :admin_required, only: [:index, :new, :edit, :show]
+  before_action :admin_required, only: [:index, :new, :edit, :show]
 
 
   def index
@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = 'ユーザを更新しました'
       redirect_to admin_users_path
     else
-      flash[:alert] = '管理者が0人になるため権限を変更できません' if @user.errors.any?
+      flash[:alert] = '管理者権限を持つアカウントが0件になるため更新できません' if @user.errors.any?
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = 'ユーザを削除しました'
       redirect_to admin_users_path
     else
-      flash[:notice] = '管理者が0人になるため削除できません'
+      flash[:notice] = '管理者権限を持つアカウントが0件になるため削除できません'
       redirect_to admin_users_path
     end
   end
