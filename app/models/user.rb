@@ -11,8 +11,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, presence: true
   has_many :tasks, dependent: :destroy
 
-  enum admin: {yes: true, no: false}
-  validates :admin, inclusion: {in: ["yes", "no"]}
+  enum admin: {true: true, false: false} #{yes: true, no: false}
+  validates :admin, inclusion: {in: ["true", "false"]} #{in: ["yes", "no"]}
 
   private
 

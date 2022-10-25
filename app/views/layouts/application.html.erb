@@ -18,7 +18,7 @@
     <% if logged_in? %>
       <% if user_admin? %>
         <li><%= link_to t("defaults.users-index"), admin_users_path, id: 'users-index' %>
-        <li><%= link_to t("defaults.add-user"), new_admin_user_path, id: 'add-user' %>
+        <li><%= link_to t("defaults.add-user"), new_admin_user_path, id: 'new-user' %>
       <% end %>
       <li><%= link_to t('defaults.Tasks Index'), tasks_path, id: 'tasks-index' %></li>
       <li><%= link_to t('defaults.New Task'), new_task_path, id: 'new-task' %></li>

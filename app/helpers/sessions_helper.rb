@@ -16,6 +16,6 @@ module SessionsHelper
   end
 
   def user_admin?
-    return true if current_user.admin == "yes"
+    return true if current_user.admin == "true"
   end
 end

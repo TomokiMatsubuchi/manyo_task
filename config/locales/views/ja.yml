@@ -7,7 +7,7 @@ ja:
     my-account: 'アカウント詳細'
     sign-out: 'ログアウト'
     users-index: 'ユーザ一覧'
-    add-user: 'ユーザを追加する'
+    add-user: 'ユーザを登録する'
   tasks:
     index:
       search: '検索'
@@ -59,7 +59,7 @@ ja:
       name: "名前"
       email: "メールアドレス"
       password: "パスワード"
-      password_confirmation: "パスワード(確認)"
+      password_confirmation: "パスワード（確認）"
     show:
       show: 'アカウント詳細ページ'
       name: "名前"
@@ -89,7 +89,7 @@ ja:
   admin:
     users:
       index:
-        User Index Page: 'ユーザー一覧ページ'
+        User Index Page: 'ユーザ一覧ページ'
         name: '名前'
         email: 'メールアドレス'
         admin: '管理者権限'
@@ -97,7 +97,7 @@ ja:
         show-user: '詳細'
         edit-user: '編集'
         destroy-user: '削除'
-        Are you sure?: '本当に削除してもよろしいですか?'
+        Are you sure?: '本当に削除してもよろしいですか？'
       new:
         Sign up: 'ユーザ登録ページ'
         admin: "管理者権限"
@@ -132,7 +132,7 @@ ja:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "パスワード(確認)"
+        password_confirmation: "パスワード（確認）"
         admin: "管理者権限"
         Back: '戻る'
   

@@ -59,6 +59,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def admin_required
-    redirect_to tasks_path, flash: {alert: "管理者以外アクセスできません"} unless user_admin?
+    redirect_to tasks_path, flash: {alert: "管理者以外はアクセスできません"} unless user_admin?
   end
 end
