@@ -10,15 +10,25 @@
   </head>
 
   <body>
-  <div class = "text-sucess">
-    <%= flash[:notice] %>
-  </div>
-  <div class = "text-danger">
-    <%= flash[:alert] %>
-  </div>
+  
+  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
   <ul>
-    <li><%= link_to t('defaults.Tasks Index'), tasks_path, id: 'tasks-index' %></li>
-    <li><%= link_to t('defaults.New Task'), new_task_path, id: 'new-task' %></li>
-    <%= yield %>
+    <% if logged_in? %>
+      <% if user_admin? %>
+        <li><%= link_to t("defaults.users-index"), admin_users_path, id: 'users-index' %>
+        <li><%= link_to t("defaults.add-user"), new_admin_user_path, id: 'add-user' %>
+      <% end %>
+      <li><%= link_to t('defaults.Tasks Index'), tasks_path, id: 'tasks-index' %></li>
+      <li><%= link_to t('defaults.New Task'), new_task_path, id: 'new-task' %></li>
+      <li><%= link_to t('defaults.my-account'), user_path(current_user.id), id: 'my-account' %></li>
+      <li><%= link_to t('defaults.sign-out'), session_path(current_user.id), id: 'sign-out', method: :delete %></li>
+    <% else %>
+      <li><%= link_to t('defaults.sign-up'), new_user_path, id: 'sign-up' %></li>
+      <li><%= link_to t('defaults.sign-in'), new_session_path, id: 'sign-in' %></li>
+    <% end %>
+  </ul>
+  <%= yield %>
   </body>
 </html>

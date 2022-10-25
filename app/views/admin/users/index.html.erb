@@ -1,0 +1,24 @@
+<h1><%= t('.User Index Page') %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.email') %></th>
+      <th><%= t('.admin') %></th>
+      <th><%= t('.tasks') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.preload(:tasks).each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.admin_i18n %></td>
+      <td><%= user.tasks.count %></td>
+      <td><%= link_to t('.show-user'), admin_user_path(user.id), class:'show-user' %></td>
+      <td><%= link_to t('.edit-user'), edit_admin_user_path(user.id), class: 'edit-user' %></td>
+      <td><%= link_to t('.destroy-user'), admin_user_path(user.id), method: :delete, class: 'destroy-user', data: {confirm: t('.Are you sure?')} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

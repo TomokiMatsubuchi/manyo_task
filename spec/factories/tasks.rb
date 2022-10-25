@@ -9,6 +9,7 @@ FactoryBot.define do
     deadline_on {'2025-02-19'}
     priority {'中'}
     status {'未着手'}
+    association :user
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -20,6 +21,7 @@ FactoryBot.define do
     deadline_on {'2025-02-19'}
     priority {'中'}
     status {'未着手'}
+    association :user, email: '234567@samile.com'
   end
 
   factory :first_task, class: Task do
@@ -29,6 +31,7 @@ FactoryBot.define do
     deadline_on {'2025-02-18'}
     priority {'中'}
     status {'未着手'}
+    association :user, email: '234567345@samile.com'
   end
 
   factory :second_task, class: Task do
@@ -38,6 +41,7 @@ FactoryBot.define do
     deadline_on {'2025-02-17'}
     priority {'高'}
     status {'着手中'}
+    association :user, email: '21412434567@samile.com'
   end
 
   factory :third_task, class: Task do
@@ -47,5 +51,6 @@ FactoryBot.define do
     deadline_on {'2025-02-16'}
     priority {'低'}
     status {'完了'}
+    association :user, email: '23414144567@samile.com'
   end
 end

@@ -1,24 +1,2 @@
 <h1><%= t('.Edit Task') %></h1>
-<% if @task.errors.any? %>
-    <div id="error_explanation" class = "alert alert-danger">
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
-<%= form_with(model: @task, local: true) do |form| %>
-  <%= form.label :title, t('.Title') %><br>
-  <%= form.text_field :title %><br>
-  <%= form.label :content, t('.Content') %><br>
-  <%= form.text_area :content %><br>
-  <%= form.label :deadline_on, t('.deadline_on') %><br>
-  <%= form.date_field :deadline_on %><br>
-  <%= form.label :priority, t('.priority') %><br>
-  <%= form.select :priority, Task.priorities.keys.to_a %><br>
-  <%= form.label :status, t('.status') %><br>
-  <%= form.select :status, Task.statuses.keys.to_a %><br>
-  <%= form.submit t('.Update Task'), id: 'update-user' %>
-<% end %>
-<%= link_to t('.Back'), :back, id: 'back' %>
+<%= render 'form', task: @task %>

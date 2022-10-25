@@ -1,26 +1,10 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.desc_create.page(params[:page])
-    
-    if params[:sort_deadline_on]
-      @tasks = Task.deadline.page(params[:page])
-    elsif params[:sort_priority]
-      @tasks = Task.priority.desc_create.page(params[:page])
-    else
-      @tasks = Task.desc_create.page(params[:page])
-    end
-
-
-    if  params[:search].present?
-      if params["search"]["status"].present? && params["search"]["title"].present?
-        @tasks = Task.search_status(params).search_title(params).page(params[:page])
-      elsif params["search"]["title"].present?
-        @tasks = Task.search_title(params).page(params[:page])
-      elsif params["search"]["status"].present?
-        @tasks = Task.search_status(params).page(params[:page])
-      end
-    end
+    @tasks = current_user.tasks
+    @tasks = @tasks.default_order.page(params[:page])
+    sort_task
+    search_task
   end
 
   def new
@@ -29,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id #@taskにcurrent_user.idを入れないとuserがないとエラーが出てしまう。
     if @task.save
       flash[:notice] = t('.Task was successfully created')
       redirect_to tasks_path
