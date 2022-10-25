@@ -19,4 +19,4 @@
   <%= form.password_field :password_confirmation %><br>
   <%= form.submit id: 'update-user' %>
 <% end %>
-<%= link_to t('.Back'), :back, id: 'back' %>
+<%= link_to t('.Back'), user_path(@user.id), id: 'back' %>

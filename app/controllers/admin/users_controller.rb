@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :admin_required, only: [:index, :new, :edit, :show]
+  #before_action :admin_required, only: [:index, :new, :edit, :show]
 
 
   def index

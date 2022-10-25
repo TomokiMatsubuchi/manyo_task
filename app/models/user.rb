@@ -17,14 +17,14 @@ class User < ApplicationRecord
   private
 
   def not_destroy_no_admin
-      if User.where(admin: true).count == 1 && self.admin == "yes"
+      if User.where(admin: :true).count == 1 && self.admin == "true"
         errors.add(:base, "管理者が0人になるため削除できません")
         throw :abort #処理の停止
       end
   end
 
   def not_update_no_admin
-    if User.where(admin: :true).count == 1 && self.admin_change == ["yes","no"]
+    if User.where(admin: :true).count == 1 && self.admin_change == ["true","false"]
       errors.add(:base, "管理者が0人になるため権限を変更できません")
       throw :abort #処理の停止
     end
