@@ -72,6 +72,7 @@ ja:
       email: "メールアドレス"
       password: "パスワード"
       password_confirmation: "パスワード(確認)"
+      Back: '戻る'
     form:
       submit:
         create: "登録する"
