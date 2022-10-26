@@ -8,7 +8,7 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         fill_in('名前', with: '太郎')
         fill_in('メールアドレス', with: '24353253455@sample.com')
         fill_in('パスワード', with: 'password')
-        fill_in('パスワード(確認)', with: 'password')
+        fill_in('パスワード（確認）', with: 'password')
         click_on('登録する')
         expect(page).to have_content 'タスク一覧ページ'
       end
@@ -60,10 +60,10 @@ RSpec.describe 'ユーザ管理機能', type: :system do
     context '管理者がログインした場合' do
       it 'ユーザ一覧画面にアクセスできる' do
         click_on('ユーザ一覧')
-        expect(page).to have_content 'ユーザー一覧ページ'
+        expect(page).to have_content 'ユーザ一覧ページ'
       end
       it '管理者を登録できる' do
-        click_on('ユーザを追加する')
+        click_on('ユーザを登録する')
         fill_in('名前', with: '花子')
         fill_in('メールアドレス', with: 'hanahana@sample.com')
         fill_in('パスワード', with: 'password')
@@ -79,12 +79,13 @@ RSpec.describe 'ユーザ管理機能', type: :system do
       it 'ユーザ編集画面から、自分以外のユーザを編集できる' do
         visit edit_admin_user_path(user.id)
         fill_in('パスワード', with: 'password')
-        fill_in('パスワード(確認)', with: 'password')
+        fill_in('パスワード（確認）', with: 'password')
         click_on('更新する')
         expect(page).to have_content 'ユーザを更新しました'
       end
       it 'ユーザを削除できる' do
         click_on('ユーザ一覧')
+        User.order("id")
         page.accept_confirm do #alertが出た際にはいをクリックする
           all('tbody tr')[0].click_link '削除'
         end
@@ -98,7 +99,7 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         fill_in('パスワード', with: 'password')
         click_button('ログイン')
         visit admin_users_path
-        expect(page).to have_content "管理者以外アクセスできません"
+        expect(page).to have_content "管理者以外はアクセスできません"
       end
     end
   end

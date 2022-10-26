@@ -8,6 +8,8 @@ ja:
     sign-out: 'ログアウト'
     users-index: 'ユーザ一覧'
     add-user: 'ユーザを登録する'
+    labels-index: 'ラベル一覧'
+    new-label: 'ラベルを登録する'
   tasks:
     index:
       search: '検索'
@@ -136,5 +138,12 @@ ja:
         password_confirmation: "パスワード（確認）"
         admin: "管理者権限"
         Back: '戻る'
+  labels:
+    index:
+      Label Index Page: 'ラベル一覧ページ'
+      name: '名前'
+      tasks: 'タスク数'
+      edit: '編集'
+      destroy: '削除'
   
   

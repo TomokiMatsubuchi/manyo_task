@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
   resources :sessions, only: [:new, :create, :destroy]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :labels
+  
+  get  '*path', controller: 'application', action: 'render_404'
+  post '*path', controller: 'application', action: 'render_404'
 end
