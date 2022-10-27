@@ -3,10 +3,15 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   
   describe '登録機能' do
-    FactoryBot.create(:task)
+    user = User.where(email: "123456@samile.com")
+    @user = user[0]
+    if @user.blank?
+      @user =User.create(name: "sampler", email: "123456@samile.com", password: "password", password_confirmation: "password")
+    end
+    FactoryBot.create(:minitask, user_id: @user.id)
     before do
       visit new_session_path #userをログインさせる
-      fill_in('メールアドレス', with: '2345agsg67@samile.com')
+      fill_in('メールアドレス', with: '123456@samile.com')
       fill_in('パスワード', with: 'password')
       click_button('ログイン')
     end
@@ -19,15 +24,19 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '一覧表示機能' do
-    let!(:first_task) {FactoryBot.create(:first_task)}
-    let!(:second_task) {FactoryBot.create(:second_task)}
-    let!(:third_task) {FactoryBot.create(:third_task)}
+    user = User.where(email: "123456@samile.com")
+    @user = user[0]
+    if @user.blank?
+      @user =User.create(name: "sampler", email: "123456@samile.com", password: "password", password_confirmation: "password")
+    end
+    FactoryBot.create(:first_task, user_id: @user.id)
+    FactoryBot.create(:second_task, user_id: @user.id)
+    FactoryBot.create(:third_task, user_id: @user.id)
     before do
       visit new_session_path #userをログインさせる
-      fill_in('メールアドレス', with: '234567ag@samile.com')
+      fill_in('メールアドレス', with: '123456@samile.com')
       fill_in('パスワード', with: 'password')
       click_button('ログイン')
-      Task.order("created_at DESC")
     end
     context '一覧画面に遷移した場合' do
       it '登録済みのタスク一覧が作成日時の降順で表示される' do
@@ -51,7 +60,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         it '終了期限昇順に並び替えられたタスク一覧が表示される' do
           click_on('ログアウト')
           visit new_session_path #userをログインさせる
-          fill_in('メールアドレス', with: '2345gasg67@samile.com')
+          fill_in('メールアドレス', with: '123456@samile.com')
           fill_in('パスワード', with: 'password')
           click_button('ログイン')
           visit tasks_path
@@ -65,7 +74,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         it "優先度の高い順に並び替えられたタスク一覧が表示される" do
           click_on('ログアウト')
           visit new_session_path #userをログインさせる
-          fill_in('メールアドレス', with: '2345sagasg7@samile.com')
+          fill_in('メールアドレス', with: '123456@samile.com')
           fill_in('パスワード', with: 'password')
           click_button('ログイン')
           visit tasks_path
@@ -93,7 +102,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         it "検索したステータスに一致するタスクのみ表示される" do
           click_on('ログアウト')
           visit new_session_path #userをログインさせる
-          fill_in('メールアドレス', with: '2345sagasg7@samile.com')
+          fill_in('メールアドレス', with: '123456@samile.com')
           fill_in('パスワード', with: 'password')
           click_button('ログイン')
           visit tasks_path
@@ -110,7 +119,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         it "検索ワードをタイトルに含み、かつステータスに一致するタスクのみ表示される" do
           click_on('ログアウト')
           visit new_session_path #userをログインさせる
-          fill_in('メールアドレス', with: '2345sagasg7@samile.com')
+          fill_in('メールアドレス', with: '123456@samile.com')
           fill_in('パスワード', with: 'password')
           click_button('ログイン')
           visit tasks_path
@@ -127,10 +136,15 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '詳細表示機能' do
-    task = FactoryBot.create(:email_task)
+    user = User.where(email: "123456@samile.com")
+    @user = user[0]
+    if @user.blank?
+      @user =User.create(name: "sampler", email: "123456@samile.com", password: "password", password_confirmation: "password")
+    end
+    task = FactoryBot.create(:email_task, user_id: @user.id)
     before do
       visit new_session_path #userをログインさせる
-      fill_in('メールアドレス', with: '234567@samile.com')
+      fill_in('メールアドレス', with: '123456@samile.com')
       fill_in('パスワード', with: 'password')
       click_button('ログイン')
     end
@@ -143,10 +157,15 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '優先度' do
-    let!(:fainal_task) {FactoryBot.create(:fainal_task)}
+    user = User.where(email: "34556@samile.com")
+    @user = user[0]
+    if @user.blank?
+      @user =User.create(name: "sampler", email: "34556@samile.com", password: "password", password_confirmation: "password")
+    end
+    Task.create(title: "task_title_11", content: "testデータ", deadline_on: "2020-10-10", priority: "高", status: Task.statuses.values.to_a.sample, user_id: @user.id)
     before do
       visit new_session_path #userをログインさせる
-      fill_in('メールアドレス', with: '23456aaa7@samile.com')
+      fill_in('メールアドレス', with: '34556@samile.com')
       fill_in('パスワード', with: 'password')
       click_button('ログイン')
     end
