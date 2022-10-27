@@ -8,9 +8,12 @@ class Task < ApplicationRecord
   enum priority:{'高':2, '中':1, '低':0}
   enum status:{'未着手':0, '着手中':1, '完了':2}
 
-  scope :search_status, -> (params){where(status: Task.statuses[params["search"]["status"]])}
-  scope :search_title, -> (params){where('title LIKE ?', "%#{params["search"]["title"]}%")}
-  scope :desc_create, -> {order("created_at DESC")}
+  scope :search_status, -> (params_status){where(status: Task.statuses[params_status])}
+  scope :search_title, -> (params_title){where('title LIKE ?', "%#{params_title}%")}
+  scope :default_order, -> {order("created_at DESC")}
   scope :deadline, -> {order("deadline_on ASC")}
   scope :priority, -> {order("priority DESC")}
+
+  belongs_to :user
+  
 end

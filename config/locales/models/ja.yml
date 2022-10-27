@@ -2,6 +2,11 @@ ja:
   activerecord:
     models:
       task: 'タスク'
+      user: 'ユーザ' 
+    errors:
+        models:
+          user:
+            taken: 'はすでに使用されています'
     attributes:
       task:
         title: 'タイトル'
@@ -9,4 +14,21 @@ ja:
         deadline_on: '終了期限'
         priority: '優先度'
         status: 'ステータス'
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+  enums:
+    user:
+      admin:
+        'yes': 'あり'
+        'no': 'なし'
+        true: 'あり'
+        false: 'なし'
+  
+        
+      
+        
+      
       

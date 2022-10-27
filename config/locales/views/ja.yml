@@ -2,6 +2,14 @@ ja:
   defaults:
     Tasks Index: 'タスク一覧'
     New Task: 'タスクを登録する'
+    sign-up: 'アカウント登録'
+    sign-in: 'ログイン'
+    my-account: 'アカウント詳細'
+    sign-out: 'ログアウト'
+    users-index: 'ユーザ一覧'
+    add-user: 'ユーザを登録する'
+    labels-index: 'ラベル一覧'
+    new-label: 'ラベルを登録する'
   tasks:
     index:
       search: '検索'
@@ -18,13 +26,6 @@ ja:
       Are you sure?: '本当に削除してもよろしいですか?'
     new:
       New Task: 'タスク登録ページ'
-      Title: 'タイトル'
-      Content: '内容'
-      Create Task: '登録する'
-      deadline_on: '終了期限'
-      priority: '優先度'
-      status: 'ステータス'
-      Back: '戻る'
     show:
       Show Task: 'タスク詳細ページ'
       Title: 'タイトル'
@@ -37,13 +38,16 @@ ja:
       Back: '戻る'
     edit:
       Edit Task: 'タスク編集ページ'
+    form:
       Title: 'タイトル'
       Content: '内容'
-      Update Task: '更新する'
       deadline_on: '終了期限'
       priority: '優先度'
       status: 'ステータス'
       Back: '戻る'
+      submit:
+        create: '登録する'
+        update: '更新する'
   views:
     pagination:
       first: "&laquo;"
@@ -51,4 +55,95 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+  users:
+    new:
+      Sign up: "アカウント登録ページ"
+      name: "名前"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード（確認）"
+    show:
+      show: 'アカウント詳細ページ'
+      name: "名前"
+      email: "メールアドレス"
+      edit: '編集'
+      Back: '戻る'
+    edit:
+      Edit: "アカウント編集ページ"
+      name: "名前"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード(確認)"
+      Back: '戻る'
+    form:
+      submit:
+        create: "登録する"
+        update: "更新する"
+      name: "名前"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード(確認)"
+  session:
+    new:
+      Log in: "ログイン"
+      email: "メールアドレス"
+      password: "パスワード"
+      log_in: "ログインページ"
+  admin:
+    users:
+      index:
+        User Index Page: 'ユーザ一覧ページ'
+        name: '名前'
+        email: 'メールアドレス'
+        admin: '管理者権限'
+        tasks: '登録タスク数'
+        show-user: '詳細'
+        edit-user: '編集'
+        destroy-user: '削除'
+        Are you sure?: '本当に削除してもよろしいですか？'
+      new:
+        Sign up: 'ユーザ登録ページ'
+        admin: "管理者権限"
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+        Back: '戻る'
+      form:
+        submit:
+          create: "登録する"
+          update: "更新する"
+        admin: "管理者権限"
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+      show:
+        Show User Page: "ユーザ詳細ページ"
+        admin: "管理者権限"
+        name: "名前"
+        email: "メールアドレス"
+        title: 'タイトル'
+        content: '内容'
+        created_at: '作成日時'
+        deadline_on: '終了期限'
+        priority: '優先度'
+        status: 'ステータス'
+        Back: '戻る'
+      edit:
+        Edit User Page: 'ユーザ編集ページ'
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        admin: "管理者権限"
+        Back: '戻る'
+  labels:
+    index:
+      Label Index Page: 'ラベル一覧ページ'
+      name: '名前'
+      tasks: 'タスク数'
+      edit: '編集'
+      destroy: '削除'
+  
   

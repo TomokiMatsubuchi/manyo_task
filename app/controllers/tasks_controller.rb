@@ -1,26 +1,11 @@
 class TasksController < ApplicationController
+  before_action :correct_user_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.desc_create.page(params[:page])
-    
-    if params[:sort_deadline_on]
-      @tasks = Task.deadline.page(params[:page])
-    elsif params[:sort_priority]
-      @tasks = Task.priority.desc_create.page(params[:page])
-    else
-      @tasks = Task.desc_create.page(params[:page])
-    end
-
-
-    if  params[:search].present?
-      if params["search"]["status"].present? && params["search"]["title"].present?
-        @tasks = Task.search_status(params).search_title(params).page(params[:page])
-      elsif params["search"]["title"].present?
-        @tasks = Task.search_title(params).page(params[:page])
-      elsif params["search"]["status"].present?
-        @tasks = Task.search_status(params).page(params[:page])
-      end
-    end
+    @tasks = current_user.tasks
+    @tasks = @tasks.default_order.page(params[:page])
+    sort_task
+    search_task
   end
 
   def new
@@ -29,6 +14,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id #@taskにcurrent_user.idを入れないとuserがないとエラーが出てしまう。
     if @task.save
       flash[:notice] = t('.Task was successfully created')
       redirect_to tasks_path
@@ -66,5 +52,12 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
+  end
+
+  def correct_user_task
+    @task = Task.find(params[:id])
+    user = @task.user_id
+    return if user_admin?
+    redirect_to tasks_path, flash: {alert: "本人以外アクセスできません"} unless current_user?(user)
   end
 end

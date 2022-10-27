@@ -26,9 +26,9 @@
       <td><%= task.deadline_on %></td>
       <td><%= task.priority %></td>
       <td><%= task.status %></td>
-      <td><%= link_to t('.show-task'), task_path(task.id), class:'show-task' %></td>
-      <td><%= link_to t('.edit-task'), edit_task_path(task.id), class: 'edit-task' %></td>
-      <td><%= link_to t('.destroy-task'), task_path(task.id), method: :delete, class: 'destroy-task', data: {confirm: t('.Are you sure?')} %></td>
+      <td><%= link_to t('.show-task'), task_path(task), class:'show-task' %></td>
+      <td><%= link_to t('.edit-task'), edit_task_path(task), class: 'edit-task' %></td>
+      <td><%= link_to t('.destroy-task'), task_path(task), method: :delete, class: 'destroy-task', data: {confirm: t('.Are you sure?')} %></td>
     </tr>
     <% end %>
   </tbody>

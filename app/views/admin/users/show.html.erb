@@ -1,0 +1,29 @@
+<h1><%= t('.Show User Page') %></h1>
+<p><b><%= t('.name') %>:</b> <%= current_user.name %></p>
+<p><b><%= t('.email') %>:</b> <%= current_user.email %></p>
+<p><b><%= t('.admin') %>:</b> <%= current_user.admin_i18n %></p>
+<table>
+  <thead>
+    <tr>
+      <th><%= t('.title') %></th>
+      <th><%= t('.content') %></th>
+      <th><%= t('.created_at') %></th>
+      <th><%= t('.deadline_on') %></th>
+      <th><%= t('.priority') %></th>
+      <th><%= t('.status') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= task.created_at.strftime("%Y/%m/%d/%H:%M") %></td>
+      <td><%= task.deadline_on %></td>
+      <td><%= task.priority %></td>
+      <td><%= task.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t('.Back'), admin_users_path, id: 'back' %>
