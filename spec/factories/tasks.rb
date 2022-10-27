@@ -28,7 +28,7 @@ FactoryBot.define do
     factory :first_task do
       title { 'first_task' }
       content { '企画書を作成する。' }
-      created_at {'2025-02-18'}
+      created_at {'2022-02-18'}
       deadline_on {'2025-02-18'}
       priority {'中'}
       status {'未着手'}
@@ -37,7 +37,7 @@ FactoryBot.define do
     factory :second_task do
       title { 'second_task' }
       content { '企画書を作成する。' }
-      created_at {'2025-02-17'}
+      created_at {'2022-02-17'}
       deadline_on {'2025-02-17'}
       priority {'高'}
       status {'着手中'}
@@ -46,7 +46,7 @@ FactoryBot.define do
     factory :third_task do
       title { 'third_task' }
       content { '企画書を作成する。' }
-      created_at {'2025-02-16'}
+      created_at {'2022-02-16'}
       deadline_on {'2025-02-16'}
       priority {'低'}
       status {'完了'}
