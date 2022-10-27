@@ -135,12 +135,12 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '優先度' do
-   before do
-     visit new_session_path #userをログインさせる
-     fill_in 'session_email', with: user.email
-     fill_in 'session_password', with: user.password
-     click_button 'ログイン'
-   end
+    before do
+      visit new_session_path #userをログインさせる
+      fill_in 'session_email', with: user.email
+      fill_in 'session_password', with: user.password
+      click_button 'ログイン'
+    end
     context '優先度を降順にしたさい、title_11が取れる' do
       it 'task_title_11が表示される' do
         task = FactoryBot.create(:fainal_task, user: user)
