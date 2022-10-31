@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = current_user.id #@taskにcurrent_user.idを入れないとuserがないとエラーが出てしまう。
     if @task.save
-      flash[:notice] = t('.Task was successfully created')
+      flash[:primary] = t('.Task was successfully created')
       redirect_to tasks_path
     else
       render :new
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      flash[:notice] = t('.Task was successfully updated')
+      flash[:success] = t('.Task was successfully updated')
       redirect_to tasks_path
     else
       render :edit
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
     def destroy
       @task = Task.find(params[:id])
       @task.destroy
-      flash[:notice] = t('.Task was successfully destroyed')
+      flash[:danger] = t('.Task was successfully destroyed')
       redirect_to tasks_path
     end
 
@@ -58,6 +58,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     user = User.find(@task.user_id)
     return if user_admin?
-    redirect_to tasks_path, flash: {alert: "本人以外アクセスできません"} unless current_user?(user)
+    redirect_to tasks_path, flash: {warning: "本人以外アクセスできません"} unless current_user?(user)
   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'アカウントを登録しました'
+      flash[:primary] = 'アカウントを登録しました'
       log_in(@user)
       redirect_to tasks_path
     else
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = 'アカウントを更新しました'
+      flash[:success] = 'アカウントを更新しました'
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     return if user_admin?
-    redirect_to tasks_path, flash: {alert: "アクセス権限がありません"} unless current_user?(@user)
+    redirect_to tasks_path, flash: {warning: "アクセス権限がありません"} unless current_user?(@user)
   end
 end

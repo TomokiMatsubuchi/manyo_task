@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'ユーザを登録しました'
+      flash[:primary] = 'ユーザを登録しました'
       redirect_to admin_users_path
     else
       render :new
@@ -33,10 +33,10 @@ class Admin::UsersController < ApplicationController
   def update    
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = 'ユーザを更新しました'
+      flash[:success] = 'ユーザを更新しました'
       redirect_to admin_users_path
     else
-      flash[:alert] = '管理者権限を持つアカウントが0件になるため更新できません' if @user.errors.any?
+      flash[:warning] = '管理者権限を持つアカウントが0件になるため更新できません' if @user.errors.any?
       render :edit
     end
   end
@@ -44,10 +44,10 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = 'ユーザを削除しました'
+      flash[:danger] = 'ユーザを削除しました'
       redirect_to admin_users_path
     else
-      flash[:notice] = '管理者権限を持つアカウントが0件になるため削除できません'
+      flash[:warning] = '管理者権限を持つアカウントが0件になるため削除できません'
       redirect_to admin_users_path
     end
   end
@@ -59,6 +59,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def admin_required
-    redirect_to tasks_path, flash: {alert: "管理者以外はアクセスできません"} unless user_admin?
+    redirect_to tasks_path, flash: {warning: "管理者以外はアクセスできません"} unless user_admin?
   end
 end
