@@ -51,12 +51,12 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
+    params.require(:task).permit(:title, :content, :deadline_on, :priority, :status, { label_ids: []})
   end
 
   def correct_user_task
     @task = Task.find(params[:id])
-    user = @task.user_id
+    user = User.find(@task.user_id)
     return if user_admin?
     redirect_to tasks_path, flash: {alert: "本人以外アクセスできません"} unless current_user?(user)
   end

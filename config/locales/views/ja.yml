@@ -13,6 +13,7 @@ ja:
   tasks:
     index:
       search: '検索'
+      labels: 'ラベル'
       Tasks Index Page: 'タスク一覧ページ'
       title: 'タイトル'
       content: '内容'
@@ -35,6 +36,7 @@ ja:
       deadline_on: '終了期限'
       priority: '優先度'
       status: 'ステータス'
+      label: 'ラベル'
       Back: '戻る'
     edit:
       Edit Task: 'タスク編集ページ'
@@ -62,6 +64,7 @@ ja:
       email: "メールアドレス"
       password: "パスワード"
       password_confirmation: "パスワード（確認）"
+      Back: '戻る'
     show:
       show: 'アカウント詳細ページ'
       name: "名前"
@@ -139,11 +142,22 @@ ja:
         admin: "管理者権限"
         Back: '戻る'
   labels:
+    form:
+        name: '名前'
+        Back: '戻る'
+        submit:
+          create: "登録する"
+          update: "更新する"
     index:
       Label Index Page: 'ラベル一覧ページ'
       name: '名前'
       tasks: 'タスク数'
       edit: '編集'
       destroy: '削除'
+      Are you sure?: '本当に削除してもよろしいですか?'
+    new:
+      New Label Page: 'ラベル登録ページ'
+    edit:
+      Edit Label Page: 'ラベル編集ページ'
   
   

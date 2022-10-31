@@ -4,9 +4,11 @@
 <%= form.select :status, Task.statuses.keys.to_a, {include_blank: true} %><br>
 <%= form.label :title, t('.title') %>
 <%= form.text_field :title %><br>
-<%= form.submit t('.search'), id: 'search_task' %>
+<%= form.label :label, t('.labels') %>
+<%= form.select :label, current_user.labels.pluck(:name, :id), {include_blank: true} %><br>
+<%= form.submit t('.search'), id: 'search_task', class: "btn btn-info" %>
 <% end %>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th><%= t('.title') %></th>
@@ -26,9 +28,9 @@
       <td><%= task.deadline_on %></td>
       <td><%= task.priority %></td>
       <td><%= task.status %></td>
-      <td><%= link_to t('.show-task'), task_path(task), class:'show-task' %></td>
-      <td><%= link_to t('.edit-task'), edit_task_path(task), class: 'edit-task' %></td>
-      <td><%= link_to t('.destroy-task'), task_path(task), method: :delete, class: 'destroy-task', data: {confirm: t('.Are you sure?')} %></td>
+      <td><%= link_to t('.show-task'), task_path(task), class:'show-task btn btn-primary' %></td>
+      <td><%= link_to t('.edit-task'), edit_task_path(task), class: 'edit-task btn btn-primary' %></td>
+      <td><%= link_to t('.destroy-task'), task_path(task), method: :delete, class: 'destroy-task btn btn-danger', data: {confirm: t('.Are you sure?')} %></td>
     </tr>
     <% end %>
   </tbody>

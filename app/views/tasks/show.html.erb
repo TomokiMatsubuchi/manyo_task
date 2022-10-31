@@ -5,6 +5,11 @@
 <p><b><%= t('.deadline_on') %>:</b> <%= @task.deadline_on %></p>
 <p><b><%= t('.priority') %>:</b> <%= @task.priority %></p>
 <p><b><%= t('.status') %>:</b> <%= @task.status %></p>
-<%= link_to t('.Edit'), edit_task_path(@task.id), id: 'edit-task' %>
+<p><b><%= t('.label') %>: </b> 
+  <% @task.labels.each do |label| %>
+    <%= label.name %>
+  <% end %>
+</p>
+<%= link_to t('.Edit'), edit_task_path(@task.id), id: 'edit-task', class: 'btn btn-primary' %>
 |
-<%= link_to t('.Back'), :back, id: 'back' %>
+<%= link_to t('.Back'), tasks_path, id: 'back', class: 'btn btn-info' %>

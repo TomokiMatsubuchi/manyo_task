@@ -2,7 +2,7 @@
 <p><b><%= t('.name') %>:</b> <%= current_user.name %></p>
 <p><b><%= t('.email') %>:</b> <%= current_user.email %></p>
 <p><b><%= t('.admin') %>:</b> <%= current_user.admin_i18n %></p>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th><%= t('.title') %></th>
@@ -26,4 +26,4 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to t('.Back'), admin_users_path, id: 'back' %>
+<%= link_to t('.Back'), admin_users_path, id: 'back', class: 'btn btn-info' %>

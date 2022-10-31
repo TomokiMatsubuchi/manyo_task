@@ -9,16 +9,30 @@
     </div>
 <% end %>
 <%= form_with(model: [:admin, @user], local: true) do |form| %>
-  <%= form.label :name, t('.name') %><br>
-  <%= form.text_field :name %><br>
-  <%= form.label :email, t('.email') %><br>
-  <%= form.email_field :email %><br>
-  <%= form.label :password, t('.password') %><br>
-  <%= form.password_field :password %><br>
-  <%= form.label :password_confirmation, t('.password_confirmation') %><br>
-  <%= form.password_field :password_confirmation %><br>
-  <%= form.label :admin, t('.admin') %><br>
-  <%= form.check_box :admin, {}, "true", "false" %><br>
-  <%= form.submit id: 'create-user' %>
+  <div class="form-group">
+    <%= form.label :name, t('.name') %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email, t('.email') %>
+    <%= form.email_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :password, t('.password') %>
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :password_confirmation, t('.password_confirmation') %>
+    <%= form.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :admin, t('.admin') %>
+    <%= form.check_box :admin, {}, "true", "false" %>
+  </div>
+  <div class="form-group d-flex justify-content-end">
+    <%= form.submit id: 'create-user', class: 'btn btn-primary' %>
+  </div>
 <% end %>
-<%= link_to t('.Back'), :back, id: 'back' %>
+<div class = "d-flex justify-content-end">
+  <%= link_to t('.Back'), :back, id: 'back', class: 'btn btn-info' %>
+</div>
