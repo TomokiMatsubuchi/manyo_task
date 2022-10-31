@@ -4,7 +4,7 @@
 <%= form.select :status, Task.statuses.keys.to_a, {include_blank: true} %><br>
 <%= form.label :title, t('.title') %>
 <%= form.text_field :title %><br>
-<%= form.label :label, t('.labels') %>
+<%= form.label :label, t('.labels'), id: 'search_label_id' %>
 <%= form.select :label, current_user.labels.pluck(:name, :id), {include_blank: true} %><br>
 <%= form.submit t('.search'), id: 'search_task', class: "btn btn-info" %>
 <% end %>

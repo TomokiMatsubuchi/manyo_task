@@ -154,7 +154,7 @@ ja:
       tasks: 'タスク数'
       edit: '編集'
       destroy: '削除'
-      Are you sure?: '本当に削除してもよろしいですか?'
+      Are you sure?: '本当に削除してもよろしいですか？'
     new:
       New Label Page: 'ラベル登録ページ'
     edit:
