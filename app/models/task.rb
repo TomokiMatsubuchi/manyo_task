@@ -15,5 +15,6 @@ class Task < ApplicationRecord
   scope :priority, -> {order("priority DESC")}
 
   belongs_to :user
-  
+  has_many :group_tasks, dependent: :destroy
+  has_many :labels, through: :group_tasks
 end

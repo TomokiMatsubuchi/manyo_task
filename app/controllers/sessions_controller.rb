@@ -8,17 +8,17 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       log_in(user)
-      flash[:notice] = 'ログインしました'
+      flash[:primary] = 'ログインしました'
       redirect_to tasks_path
     else
-      flash.now[:notice] = 'メールアドレスまたはパスワードに誤りがあります'
+      flash.now[:warning] = 'メールアドレスまたはパスワードに誤りがあります'
       render :new
     end
   end
 
   def destroy
     session.delete(:user_id)
-    flash[:notice] = 'ログアウトしました'
+    flash[:danger] = 'ログアウトしました'
     redirect_to new_session_path
   end
 end

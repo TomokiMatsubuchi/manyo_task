@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }, presence: true
   has_many :tasks, dependent: :destroy
+  has_many :labels, dependent: :destroy
 
   enum admin: {true: true, false: false} #{yes: true, no: false}
   validates :admin, inclusion: {in: ["true", "false"]} #{in: ["yes", "no"]}

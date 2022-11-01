@@ -20,8 +20,8 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in('タイトル', with: 'かき揚げ')
         fill_in('内容', with: '書類作成')
         fill_in('終了期限', with: '2022-10-31')
-        select('中', from: '優先度')
-        select('未着手', from: 'ステータス')
+        select('中', from: 'task[priority]')
+        select('未着手', from: 'task[status]')
         click_button('登録する')
         expect(page).to have_content '書類作成'
       end
@@ -50,8 +50,8 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in('タイトル', with: 'かき揚げ')
         fill_in('内容', with: '書類作成')
         fill_in('終了期限', with: '2022-10-31')
-        select('中', from: '優先度')
-        select('未着手', from: 'ステータス')
+        select('中', from: 'task[priority]')
+        select('未着手', from: 'task[status]')
         click_button('登録する')
         task_list = all('tbody tr')
         expect(task_list[0]).to have_content 'かき揚げ'

@@ -19,6 +19,8 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード（確認）'
+      label:
+        name: '名前'
   enums:
     user:
       admin:
