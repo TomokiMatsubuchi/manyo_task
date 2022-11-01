@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :labels
   
-  get  '*path', controller: 'application', action: 'render_404'
-  post '*path', controller: 'application', action: 'render_404'
+  #get  '*path', controller: 'application', action: 'render_404'
+  #post '*path', controller: 'application', action: 'render_404'
 end
